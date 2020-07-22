@@ -1,0 +1,55 @@
+.item {
+  margin-top: 20px;
+  border: 1px solid #333;
+  padding: 20px;
+  display: flex;
+}
+
+.post__description {
+  flex-basis: 15%;
+}
+
+.post__text {
+  flex-basis: 85%;
+}
+  
+.post__ava{
+  width: 80px;
+  border-radius: 50%;
+}
+
+.reiting {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.like {
+  margin-left: 2px;
+}
+
+.like__item {
+  width: 30px;
+  cursor: pointer;
+}
+
+.dislike {
+  margin-left: 10px;
+}
+
+.dislike__item {
+  width: 30px;
+  cursor: pointer;
+}
+
+.likesCount {
+  color: #333;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+.dislikesCount {
+  color: #333;
+  margin-top: 2px;
+  margin-left: 5px;
+}

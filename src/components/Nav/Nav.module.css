@@ -1,0 +1,48 @@
+.nav {
+    grid-area: n;
+    background-color: #121b26;
+    padding: 15px;
+    padding-left: 25px;
+    border-radius: 5px;
+  }
+  
+  .nav a {
+    color: #c9d1d2;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 1.5;
+
+  }
+
+  .usersItem {
+    margin-top: 10px;
+  }
+
+  .usersItem a {
+    font-size: 35px;
+    font-weight: 400;
+  }
+
+  .usersItem a:hover {
+    color: #9daaac;
+  }
+
+  .usersItem a:active {
+    color: #768586;
+  }
+
+  .usersItem a.activelink {
+    color: #687172;
+  }
+
+  .item a:hover {
+    color: #9daaac;
+  }
+
+  .item a:active {
+    color: #768586;
+  }
+
+  .item a.activelink {
+    color: #687172;
+  }

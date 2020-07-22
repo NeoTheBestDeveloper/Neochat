@@ -1,0 +1,26 @@
+    .dialogs__item {
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: #c9d1d2;
+    padding-left: 10px;
+  }
+  
+  .dialogs__item a{
+    text-decoration: none;
+    color: #c9d1d2;
+    display: block;
+  } 
+  
+  .dialogs__item a:hover{
+    color: #768586;
+  } 
+   a.activeLink  {
+    color: #687172;
+    transform: translateX(20px) scale(1.2);
+  }
+  
+  
+  .dialogs__item:active a{
+    color: #687172;
+  }
+  

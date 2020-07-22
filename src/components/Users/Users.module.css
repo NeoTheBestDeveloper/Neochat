@@ -1,0 +1,95 @@
+.usersTitle {
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+.user {
+    display: flex;
+    padding: 20px;
+    margin-left: 25px;
+    font-size: 18px;
+}
+
+.ava {
+    width: 70px;
+    height: 70px;
+    display: block;
+    border-radius: 50%;
+    margin: 0 auto;  
+}
+
+.followBtn {
+    margin-top: 15px;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 13px;
+    padding: 10px;
+    border: 1px solid #333;
+    font-size: 18px;
+    outline: none;
+    width: 90px;
+    cursor: pointer;
+}
+
+.userRight {
+    display: flex;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: 10px;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.descriptions {
+    margin-left: 5px;
+}
+
+.name {
+    font-size: 25px;
+    line-height: 0.95;
+    color: #7a8d8d;
+}
+
+.location {
+    margin-right: 5px;
+    color: #7a8d8d;
+    text-align: right;
+}
+
+.status {
+    margin-top: 40px;
+}
+
+.users__header {
+    display: flex;
+}
+
+.pageChoise  {
+    display: flex;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.pageChoise li {
+    margin-top: 10px;
+    list-style: none;
+    width: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+    color: #fff;
+}
+
+.pageChoise li:hover {
+    color: #9daaac;
+  }
+
+.pageChoise li:active {
+    color: #768586;
+  }
+
+li.selected {
+    color: #687172;
+}

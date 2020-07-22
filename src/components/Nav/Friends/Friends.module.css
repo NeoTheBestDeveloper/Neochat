@@ -1,0 +1,12 @@
+.friends__title {
+    font-size: 35px;
+    font-weight: 400;
+    margin-top: 50px;
+}
+
+.friends__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px;
+}

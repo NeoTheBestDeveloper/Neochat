@@ -23,7 +23,7 @@ let Users = (props) => {
                 {props.users.map(u => <div key={u.id}>
                     <div className={s.user}>
                         <div className={s.userLeft}>
-                            <NavLink to={'/profile/' + u.id}> <img src={u.ava !== null ? u.ava : props.avaDefault} className={s.ava} alt="/" /> </NavLink>
+                            <NavLink className={s.ava_wrapper} to={'/profile/' + u.id}> <img src={u.ava !== null ? u.ava : props.avaDefault} className={s.ava} alt="/" /> </NavLink>
                             {u.subscriptionStatus
                                 ? <button onClick={() => { props.unfollow(u.id) }} className={s.followBtn}>Unfollow</button>
                                 : <button onClick={() => { props.follow(u.id) }} className={s.followBtn}>Follow</button>

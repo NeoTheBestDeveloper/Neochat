@@ -6,16 +6,19 @@
   .profile__ava {
     width: 25%;
     height: 300px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
   }
   
   .ava__img {
     border: 1px solid #333;
-    border-radius: 10px;
     display: block;
-    width: 100%;
-    height: auto;
-    margin-top: 30px;
-    margin-left: 30px;
+    height: 300px;
+    transform: translateX(-45%);
   }
 
   .profile__description {

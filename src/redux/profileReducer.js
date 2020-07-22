@@ -7,6 +7,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEWPOST-TEXTе';
 const CHANGE_LIKE = 'CHANGE-LIKE';
 const CHANGE_DISLIKE = 'CHANGE-DISLIKE';
+const SET_PROFILE = 'SET-PROFILE';
 
 let initState = {
     postData: [
@@ -15,6 +16,7 @@ let initState = {
     likesCountStart: 0,
     dislikesCountStart: 0,
     idStart: 0,
+    profile: null,
 }
 
 const profileReducer = (state = initState, action) => {
@@ -108,6 +110,10 @@ const profileReducer = (state = initState, action) => {
             return stateCopy;
         }
 
+        case SET_PROFILE: {
+            return {...state, profile: action.profile}
+        }
+
         default:
             return state;
     }
@@ -120,5 +126,7 @@ export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST
 export const changeLikeActionCreator = (id) => ({ type: CHANGE_LIKE, id: id });
 
 export const changeDisikeActionCreator = (id) => ({ type: CHANGE_DISLIKE, id: id });
+
+export const setProfile = (profile) => ({type: SET_PROFILE, profile });
 
 export default profileReducer;

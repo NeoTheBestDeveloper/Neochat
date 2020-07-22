@@ -11,12 +11,19 @@
     font-size: 18px;
 }
 
-.ava {
+.ava_wrapper {
+    display: block;
     width: 70px;
     height: 70px;
-    display: block;
+    overflow: hidden;
     border-radius: 50%;
-    margin: 0 auto;  
+    margin: 0 auto; 
+}
+
+.ava {
+    height: 100%;
+    display: block;
+    transform: translateX(-35%);
 }
 
 .followBtn {

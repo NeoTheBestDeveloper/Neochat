@@ -5,20 +5,18 @@
   
   .profile__ava {
     width: 25%;
-    height: 300px;
-    overflow: hidden;
+    height: 250px;
     margin-top: 30px;
     margin-left: 30px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
   }
   
   .ava__img {
     border: 1px solid #333;
     display: block;
-    height: 300px;
-    transform: translateX(-45%);
+    width: 100%; /* Ширина изображений */
+    height: 100%; /* Высота изображении */
+    object-fit: cover; /* Вписываем фотографию в область */
+    border-radius: 10px;
   }
 
   .profile__description {

@@ -21,9 +21,9 @@
 }
 
 .ava {
-    height: 100%;
-    display: block;
-    transform: translateX(-35%);
+    width: 100%; /* Ширина изображений */
+    height: 100%; /* Высота изображении */
+    object-fit: cover; /* Вписываем фотографию в область */
 }
 
 .followBtn {

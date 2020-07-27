@@ -3,12 +3,13 @@ import Profile from './Profile';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
 import { setProfile } from './../../redux/profileReducer';
+import { withRouter } from 'react-router-dom';
 
 
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/api/profile/1/`).then(response => {
+    axios.get(`http://localhost:8000/api${this.props.location.pathname}`).then(response => {
       console.log(response.data);
       this.props.setProfile(response.data);
     });
@@ -17,16 +18,18 @@ class ProfileContainer extends React.Component {
 
   render() {
     return (
-      <Profile {...this.props} profile={this.props.profie} />
+      <Profile {...this.props} profile={this.props.profile} />
     );
   }
 
 }
 
 let mapStateToProps = (state) => ({
-  profie: state.profilePage.profile
+  profile: state.profilePage.profile
 });
 
-export default connect (mapStateToProps, {
+let WithUrlDataContainerComponent = withRouter(ProfileContainer);
+
+export default connect(mapStateToProps, {
   setProfile,
-}) (ProfileContainer); 
+})(WithUrlDataContainerComponent); 

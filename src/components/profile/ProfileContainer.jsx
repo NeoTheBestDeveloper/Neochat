@@ -14,9 +14,10 @@ class ProfileContainer extends React.Component {
     if (!userId) {
       userId = 2;
     };
-    axios.get(`http://localhost:8000/api/profile/${userId}`).then(response => {
-      if (response.data.ava === null) {
-        response.data.ava = avadefault;
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
+      console.log(response)
+      if (response.data.photos.large === null) {
+        response.data.photos.large = avadefault;
       }
       this.props.setProfile(response.data);
     });

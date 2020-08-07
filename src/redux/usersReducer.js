@@ -24,7 +24,7 @@ const userReducer = (state = initState, action) => {
                 ...state,
                 usersData: state.usersData.map(u => {
                     if (u.id === action.id) {
-                        return { ...u, subscriptionStatus: true }
+                        return { ...u, followed: true }
                     }
                     return u;
                 })
@@ -35,7 +35,7 @@ const userReducer = (state = initState, action) => {
                 ...state,
                 usersData: state.usersData.map(u => {
                     if (u.id === action.id) {
-                        return { ...u, subscriptionStatus: false }
+                        return { ...u, followed: false }
                     }
                     return u;
                 })

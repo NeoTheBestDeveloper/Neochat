@@ -10,3 +10,24 @@
     display: block;
   }
   
+  .login_block {
+    float: right;
+  }
+
+  .login_block a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #c9d1d2;
+  }
+
+  .login_block a:hover {
+    color: #9daaac;
+  }
+
+  .login_block a:active {
+    color: #768586;
+  }
+
+  .login_block a.activelink {
+    color: #687172;
+  }

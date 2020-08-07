@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import ProfileContainer from './components/profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -17,7 +17,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <Nav />
         <div className="app-wrapper-content">
           <Route exact path="/" render={() => <ProfileContainer />} />

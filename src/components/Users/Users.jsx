@@ -5,7 +5,6 @@ import { followAPI } from '../../api/api';
 
 let Users = (props) => {
     // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
     let pages = [];
     for (let i = 1; i <= 6; i++) {
         pages.push(i);
@@ -26,22 +25,26 @@ let Users = (props) => {
                         <div className={s.userLeft}>
                             <NavLink className={s.ava_wrapper} to={'/profile/' + u.id}> <img src={u.photos.small !== null ? u.photos.small : props.avaDefault} className={s.ava} alt="/" /> </NavLink>
                             {u.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 
+                                    props.toggleFollowigProgress(true, u.id);
                                     followAPI.unfollow(u.id).then(response => {
                                         if (response.resultCode === 0) {
-                                            props.unfollow(u.id)
+                                            props.unfollow(u.id);
                                         }
+                                        props.toggleFollowigProgress(false, u.id);
                                     });
 
                                 }} className={s.followBtn}>Unfollow</button>
 
-                                : <button onClick={() => {
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 
+                                    props.toggleFollowigProgress(true, u.id);
                                     followAPI.follow(u.id).then(response => {
                                         if (response.resultCode === 0) {
-                                            props.follow(u.id)
+                                            props.follow(u.id);
                                         }
+                                        props.toggleFollowigProgress(false, u.id);
                                     })
 
 

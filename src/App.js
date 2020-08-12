@@ -11,6 +11,7 @@ import Settings from './components/Settings/Settings';
 import Games from './components/Games/Games';
 import Servises from './components/Servises/Servises';
 import UsersContainer from './components/Users/UsersContainer';
+import Login from './components/Login/Login';
 
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
         <Nav />
         <div className="app-wrapper-content">
           <Route exact path="/" render={() => <ProfileContainer />} />
+          <Route path="/login" render={() => <Login />} />
           <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
           <Route path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/news" render={News} />

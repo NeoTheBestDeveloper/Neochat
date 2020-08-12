@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./Users.module.css";
 import { NavLink } from 'react-router-dom';
-import { followAPI } from '../../api/api';
 
 let Users = (props) => {
     // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -27,25 +26,13 @@ let Users = (props) => {
                             {u.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 
-                                    props.toggleFollowigProgress(true, u.id);
-                                    followAPI.unfollow(u.id).then(response => {
-                                        if (response.resultCode === 0) {
-                                            props.unfollow(u.id);
-                                        }
-                                        props.toggleFollowigProgress(false, u.id);
-                                    });
+                                    props.unfollow(u.id);
 
                                 }} className={s.followBtn}>Unfollow</button>
 
                                 : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 
-                                    props.toggleFollowigProgress(true, u.id);
-                                    followAPI.follow(u.id).then(response => {
-                                        if (response.resultCode === 0) {
-                                            props.follow(u.id);
-                                        }
-                                        props.toggleFollowigProgress(false, u.id);
-                                    })
+                                    props.follow(u.id);
 
 
                                 }} className={s.followBtn}>Follow</button>

@@ -2,6 +2,8 @@ import like from './../img/thumbs-up-regular.svg';
 import dislike from './../img/thumbs-down-regular.svg';
 import likeActive from './../img/thumbs-up-solid.svg';
 import dislikeActive from './../img/thumbs-down-solid.svg';
+import avadefault from './../img/user.svg';
+import { usersAPI } from '../api/api';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEWPOST-TEXTе';
@@ -47,7 +49,7 @@ const profileReducer = (state = initState, action) => {
                 postData: [newPost, ...state.postData],
             }
         }
-        
+
         case UPDATE_NEW_POST_TEXT: {
             return {
                 ...state,
@@ -111,7 +113,7 @@ const profileReducer = (state = initState, action) => {
         }
 
         case SET_PROFILE: {
-            return {...state, profile: action.profile}
+            return { ...state, profile: action.profile }
         }
 
         default:
@@ -127,6 +129,16 @@ export const changeLikeActionCreator = (id) => ({ type: CHANGE_LIKE, id: id });
 
 export const changeDisikeActionCreator = (id) => ({ type: CHANGE_DISLIKE, id: id });
 
-export const setProfile = (profile) => ({type: SET_PROFILE, profile });
+export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
+
+export const getProfileTC = (userId) => (dispatch) => {
+    usersAPI.getProfile(userId).then(response => {
+        if (response.photos.large === null) {
+            response.photos.large = avadefault;
+        }
+        dispatch(setProfile(response));
+    });
+};
+
 
 export default profileReducer;

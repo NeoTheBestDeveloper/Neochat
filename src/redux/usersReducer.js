@@ -1,4 +1,5 @@
 import avaDefault from '../img/avaSvgDefault.svg';
+import { usersAPI, followAPI } from './../api/api';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -65,16 +66,59 @@ const userReducer = (state = initState, action) => {
 
         default:
             return state;
-    }
+    };
+}; 
 
-}
-
-export const follow = (id) => ({ type: FOLLOW, id: id });
-export const unfollow = (id) => ({ type: UNFOLLOW, id: id });
+export const followSuccess = (id) => ({ type: FOLLOW, id: id });
+export const unfollowSuccess = (id) => ({ type: UNFOLLOW, id: id });
 export const setUsers = (usersData) => ({ type: SET_USERS, usersData });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_USERS_TOTAL_COUNT, totalUsersCount });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleFollowigProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId });
+
+export const getUsersThunkCreater = (currentPage, pageSize) => {
+
+    return (dispatch) => {
+
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then(response => {
+            dispatch(setCurrentPage(currentPage));
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(response.items));
+            dispatch(setUsersTotalCount(response.totalCount));
+
+        });
+    }
+};
+
+export const unfollow = (userId) => {
+
+    return (dispatch) => {
+
+        dispatch(toggleFollowigProgress(true, userId));
+        followAPI.unfollow(userId).then(response => {
+            if (response.resultCode === 0) {
+                unfollowSuccess(userId);
+            }
+            dispatch(toggleFollowigProgress(false, userId));
+        });
+    }
+};
+
+export const follow = (userId) => {
+
+    return (dispatch) => {
+
+        dispatch(toggleFollowigProgress(true, userId));
+        followAPI.follow(userId).then(response => {
+            if (response.resultCode === 0) {
+                followSuccess(userId);
+            }
+            dispatch(toggleFollowigProgress(false, userId));
+        })
+    }
+};
 
 export default userReducer;

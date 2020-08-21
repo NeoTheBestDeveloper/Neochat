@@ -1,0 +1,85 @@
+.form_title {
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+.form {
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    margin-top: 75px;
+}
+
+.form_login_wrapper {
+    padding-bottom: 20px;
+}
+
+.form_loginInput {
+    width: 450px;
+    height: 40px;
+    margin-bottom: 5px;
+    background-color: transparent;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 30px;
+    font-size: 30px;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.form_password_wrapper {
+    padding-bottom: 15px;
+}
+
+.form_passwordInput {
+    width: 450px; 
+    height: 40px;   
+    margin-bottom: 5px;
+    background-color: transparent;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 30px;
+    font-size: 30px;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.submitBtn_wrapper {
+    display: flex;
+}
+
+.submitBtn {
+    margin-top: 25px;
+    width: 25%;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 30px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #333;
+}
+
+.submitBtn:active {
+    background-color: #768586;
+}
+
+.checkbox_wrapper {
+    margin-top: 35px;
+    width: 60%;
+    margin-left: 50px;
+}
+
+.checkbox_wrapper label {
+    margin-right: 20px;
+    font-size: 30px;
+}
+
+.form_checkboxInput {
+    cursor: pointer;
+    outline: none;
+}

@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { follow, unfollow, setCurrentPage, toggleFollowigProgress, getUsersThunkCreater } from '../../redux/usersReducer';
 import Users from './Users.jsx'
-import Loader from './../loader/Loader';
+import Loader from './../common/loader/Loader';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
 
-class UsersAPIComponent extends React.Component {
+class UsersComponent extends React.Component {
     componentDidMount() {
         this.props.getUsersThunkCreater(this.props.currentPage, this.props.pageSize);
     }
@@ -44,9 +46,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {
-    follow, unfollow, setCurrentPage,
-    toggleFollowigProgress, getUsersThunkCreater
-})(UsersAPIComponent);
-
-export default UsersContainer;
+export default compose(
+    connect(mapStateToProps, {
+        follow, unfollow, setCurrentPage,
+        toggleFollowigProgress, getUsersThunkCreater
+    }),
+    withAuthRedirect,
+)(UsersComponent);

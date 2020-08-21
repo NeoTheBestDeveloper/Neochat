@@ -1,12 +1,12 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-import Loader from './../../loader/Loader';
+import Loader from './../../common/loader/Loader';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
-  if (props.profile === null) {
+  if (!props.profile || !props.status) {
     return <Loader />
   }
-
   return (
     <div className={s.profile__title}>
       <div className={s.profile__ava} >
@@ -14,10 +14,7 @@ const ProfileInfo = (props) => {
       </div>
       <div className={s.profile__description} >
         <div className={s.name}>{props.profile.fullName}</div>
-        <div className={s.status}>
-          <div className={s.status__title}>Status:</div>
-          <div className={s.status__text}>{props.profile.aboutMe}</div>
-        </div>
+        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         <div className={s.all__counts}>
           <div className={s.counts}>Friends<br />{props.profile.friendsCount !== null ? 34 : props.profile.friendsCount}</div>
           <div className={s.counts}>Subscribers<br />{props.profile.subscribersCount !== null ? 23 : props.profile.subscribersCount}</div>

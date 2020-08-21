@@ -1,31 +1,32 @@
 import React from 'react';
 import s from './Dialogs.module.css';
+import { Field, reduxForm } from 'redux-form';
+import { FormControl } from '../common/FormsControl/FormControl';
+import { required, maxLengthCreater } from '../../utils/validators/validators';
 
+
+const maxLenght50 = maxLengthCreater(50);
+const Textarea = FormControl("textarea");
+
+const AddMessaageForm = (props) => {
+    return <form className={s.addMessageForm} onSubmit={props.handleSubmit}>
+        <Field className={s.form__text}
+            placeholder="Add new message:)"
+            value={props.newMessageText}
+            component={Textarea}
+            validate={[required, maxLenght50]}
+            name="newMessageBody"></Field>
+        <button className={s.form__adder}>Add message</button>
+    </form >
+}
+
+const AddMessageReduxForm = reduxForm({ form: "dialogsAddMessageForm" })(AddMessaageForm);
 
 let messagesBlock = React.createRef();
 const Dialogs = (props) => {
-    let newMessageElement = React.createRef();
-
-    let updateNewMessageText = () => {
-        let text = newMessageElement.current.value;
-        props.updateNewMessageText(text);
+    const addNewMessage = (formData) => {
+        props.addMessage(formData.newMessageBody);
     }
-
-    let autoScrolling = () => {
-        let messages = messagesBlock.current;
-        messages.scrollTop = messages.scrollHeight;
-    }
-
-    let addMessage = () => {
-        props.addMessage();
-        setTimeout(() => {autoScrolling()}, 1);
-    };
-
-    let handleClick = (e) => {
-        props.handleClick(e);
-        setTimeout(() => {autoScrolling()}, 1);
-    }
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs__left}>
@@ -39,15 +40,13 @@ const Dialogs = (props) => {
                 <div className={s.messagesItems} ref={messagesBlock}>
                     {props.messageElements}
                 </div>
-                <div className={s.addMessageForm}>
-                    <textarea ref={newMessageElement} className={s.form__text} onChange={updateNewMessageText} onKeyPress={handleClick} placeholder="Add new message:)" value={props.newMessageText}></textarea>
-                    <button className={s.form__adder} onClick={addMessage}>Add message</button>
-                </div>
-
+                <AddMessageReduxForm onSubmit={addNewMessage} />
             </div>
         </div>
     )
 }
+
+
 
 
 export default Dialogs;

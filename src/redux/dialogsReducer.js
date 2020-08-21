@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 
 let initState = {
@@ -8,35 +7,22 @@ let initState = {
     ],
     messagesData: [
     ],
-    newMessageText: '',
     idStart: 0,
 }
 
 export const dialogsReducer = (state = initState, action) => {
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            return {
-                ...state,
-                newMessageText: action.newText
-            };
-        }
-
         case ADD_MESSAGE: {
-            if (state.newMessageText.trim().length === 0) {
-                return state;
-            }
-
             let newMessage = {
                 id: state.idStart,
-                messageItem__text: state.newMessageText,
+                messageItem__text: action.newMessageBody,
                 author: "Me",
                 avatar: "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg",
             }
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                newMessageText: '',
                 idStart: { ...state }.idStart + 1,
             };
 
@@ -48,8 +34,6 @@ export const dialogsReducer = (state = initState, action) => {
 
 }
 
-export const updateNewMessageTextActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
+export const addMessageActionCreator = (newMessageBody) => ({ type: ADD_MESSAGE, newMessageBody })
 
 export default dialogsReducer;

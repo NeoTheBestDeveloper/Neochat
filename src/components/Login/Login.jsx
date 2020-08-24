@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Login.module.css';
-import { reduxForm, Field, reset } from 'redux-form';
+import formControlStyles from './../common/FormsControl/FormControl.module.css'
+import { reduxForm, Field } from 'redux-form';
 import { FormControl } from '../common/FormsControl/FormControl';
 import { required, maxLengthCreater } from '../../utils/validators/validators';
 import { compose } from 'redux';
@@ -32,12 +33,15 @@ const LoginForm = (props) => {
                     name={'password'} />
             </div>
             <div className={s.submitBtn_wrapper}>
+                
                 <button className={s.submitBtn} >Login</button>
                 <div className={s.checkbox_wrapper}>
                     <label htmlFor="rememberMe">Remember me</label>
                     <Field type={'checkbox'} className={s.form_checkboxInput} id={'rememberMe'} component={"input"} name={'rememberMe'} />
                 </div>
             </div>
+            {props.error && <div className={formControlStyles.form_summary_error}>{props.error}</div>}
+            
         </form>
     </div>
 }
@@ -73,7 +77,6 @@ let mapDispatchToProps = (dispatch) => {
     return {
         login: (email, password, rememberMe) => {
             dispatch(login(email, password, rememberMe));
-            dispatch(reset("login"));
         }
     }
 }

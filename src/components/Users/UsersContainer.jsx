@@ -5,6 +5,7 @@ import Users from './Users.jsx'
 import Loader from './../common/loader/Loader';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
+import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getAvaDefault, getIsFetching, getFollowingInProgress  } from '../../redux/users-selectors';
 
 class UsersComponent extends React.Component {
     componentDidMount() {
@@ -34,17 +35,31 @@ class UsersComponent extends React.Component {
     }
 }
 
+// let mapStateToProps = (state) => {
+//     return {
+//         users: state.usersPage.usersData,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         avaDefault: state.usersPage.avaDefault,
+//         isFetching: state.usersPage.isFetching,
+//         followingInProgress: state.usersPage.followingInProgress,
+//     }
+// }
+
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.usersData,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        avaDefault: state.usersPage.avaDefault,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        avaDefault: getAvaDefault(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
+
+
 
 export default compose(
     connect(mapStateToProps, {

@@ -132,6 +132,9 @@ export const getProfileTC = (userId) => (dispatch) => {
 
 export const getStatusTC = (userId) => (dispatch) => {
     profileAPI.getStatus(userId).then(response => {
+        if (!response) {
+            response = "Not status"
+        }
         dispatch(setStatus(response));
     });
 };

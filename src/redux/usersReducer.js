@@ -100,7 +100,7 @@ export const unfollow = (userId) => {
         dispatch(toggleFollowigProgress(true, userId));
         followAPI.unfollow(userId).then(response => {
             if (response.resultCode === 0) {
-                unfollowSuccess(userId);
+                dispatch(unfollowSuccess(userId));
             }
             dispatch(toggleFollowigProgress(false, userId));
         });
@@ -114,7 +114,7 @@ export const follow = (userId) => {
         dispatch(toggleFollowigProgress(true, userId));
         followAPI.follow(userId).then(response => {
             if (response.resultCode === 0) {
-                followSuccess(userId);
+                dispatch(followSuccess(userId));
             }
             dispatch(toggleFollowigProgress(false, userId));
         })

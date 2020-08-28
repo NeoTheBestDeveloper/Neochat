@@ -17,6 +17,7 @@ class UsersComponent extends React.Component {
     }
 
     render() {
+        console.log('render USERS');
         return <>
             {this.props.isFetching ? <Loader /> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
@@ -48,6 +49,7 @@ class UsersComponent extends React.Component {
 // }
 
 let mapStateToProps = (state) => {
+    console.log('mapStateToProps USERS');
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),

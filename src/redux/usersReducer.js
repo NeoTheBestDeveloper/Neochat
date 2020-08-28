@@ -18,10 +18,12 @@ let initState = {
     avaDefault: avaDefault,
     isFetching: true,
     followingInProgress: [],
+    fake: 7,
 }
 
 const userReducer = (state = initState, action) => {
     switch (action.type) {
+        case "FAKE": return {...state, fake: state.fake + 1}
         case FOLLOW:
             return {
                 ...state,

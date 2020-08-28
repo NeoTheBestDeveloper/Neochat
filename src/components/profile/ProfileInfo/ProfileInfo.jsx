@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import Loader from './../../common/loader/Loader';
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
   if (!props.profile || !props.status) {
@@ -14,7 +14,7 @@ const ProfileInfo = (props) => {
       </div>
       <div className={s.profile__description} >
         <div className={s.name}>{props.profile.fullName}</div>
-        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
         <div className={s.all__counts}>
           <div className={s.counts}>Friends<br />{props.profile.friendsCount !== null ? 34 : props.profile.friendsCount}</div>
           <div className={s.counts}>Subscribers<br />{props.profile.subscribersCount !== null ? 23 : props.profile.subscribersCount}</div>

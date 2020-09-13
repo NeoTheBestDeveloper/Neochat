@@ -10,13 +10,14 @@ const CHANGE_LIKE = 'CHANGE-LIKE';
 const CHANGE_DISLIKE = 'CHANGE-DISLIKE';
 const SET_PROFILE = 'SET-PROFILE';
 const SET_STATUS = 'SET-STATUS';
+const DELETE_POST = 'DELETE-POST';
 
 let initState = {
     postData: [
     ],
     likesCountStart: 0,
     dislikesCountStart: 0,
-    idStart: 0,
+    idStart: 1,
     profile: null,
     status: ""
 }
@@ -40,62 +41,29 @@ const profileReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                postData: [newPost, ...state.postData],
+                postData: [...state.postData, newPost],
             }
         }
 
-        case CHANGE_LIKE: {
-            let stateCopy = { ...state };
-            stateCopy.postData = [...state.postData];
+        case DELETE_POST:
+            return { ...state, postData: state.postData.filter(p => p.id !== action.id) };
 
-            for (let post of stateCopy.postData) {
-                if (post.id === action.id && post.dislikeCliked === false) {
-                    if (post.likeCliked) {
-                        post.likesCount--;
-                        post.likeSrc = like;
-                        post.likeCliked = false;
-                    } else {
-                        post.likesCount++;
-                        post.likeSrc = likeActive;
-                        post.likeCliked = true;
-                    }
-                } else if (post.id === action.id && post.dislikeCliked === true) {
-                    post.dislikesCount--;
-                    post.dislikeSrc = dislike;
-                    post.dislikeCliked = false;
-                    post.likesCount++;
-                    post.likeSrc = likeActive;
-                    post.likeCliked = true;
-                }
-            }
-            return stateCopy;
+        case CHANGE_LIKE: {
+            return {
+                ...state,
+                postData: [...state.postData, state.postData.find(p => p.id === action.id).likesCount += 1]
+            };
         }
 
         case CHANGE_DISLIKE: {
-            let stateCopy = { ...state };
-            stateCopy.postData = [...state.postData];
-
-            for (let post of stateCopy.postData) {
-                if (post.id === action.id && post.likeCliked === false) {
-                    if (post.dislikeCliked) {
-                        post.dislikesCount--;
-                        post.dislikeSrc = dislike;
-                        post.dislikeCliked = false;
-                    } else {
-                        post.dislikesCount++;
-                        post.dislikeSrc = dislikeActive;
-                        post.dislikeCliked = true;
-                    }
-                } else if (post.id === action.id && post.likeCliked === true) {
-                    post.likesCount--;
-                    post.likeSrc = like;
-                    post.likeCliked = false;
-                    post.dislikesCount++;
-                    post.dislikeSrc = dislikeActive;
-                    post.dislikeCliked = true;
-                }
+            let post = {...state.postData.find(p => p.id === action.id)};
+            if (post.likesCount === 0) {
+                post.dislikesCount++
             }
-            return stateCopy;
+            return {
+                ...state,
+                postData: [...state.postData, post]
+            }
         }
 
         case SET_PROFILE: {
@@ -113,9 +81,11 @@ const profileReducer = (state = initState, action) => {
 
 export const addPostActionCreator = (postText) => ({ type: ADD_POST, postText });
 
-export const changeLikeActionCreator = (id) => ({ type: CHANGE_LIKE, id: id });
+export const deletePostAC = (id) => ({ type: DELETE_POST, id });
 
-export const changeDisikeActionCreator = (id) => ({ type: CHANGE_DISLIKE, id: id });
+export const changeLikeAC = (id) => ({ type: CHANGE_LIKE, id: id });
+
+export const changeDisikeAC = (id) => ({ type: CHANGE_DISLIKE, id: id });
 
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
 

@@ -24,14 +24,11 @@ const MyPostForm = (props) => {
 const MyPostReduxForm = reduxForm({ form: "AddPostForm" })(MyPostForm);
 
 const MyPosts = React.memo(props => {
-  console.log('MyPost RENDER');
-
   let addPost = (formData) => {
     props.addPost(formData.postText);
   }
 
-  let Posts = props.Posts.map(post => <PostContainer key={post.id} message={post.message} dislikesCount={post.dislikesCount} likesCount={post.likesCount} id={post.id} likeSrc={post.likeSrc} dislikeSrc={post.dislikeSrc} />);;
-
+  let Posts = [...props.Posts].reverse().map(post => <PostContainer key={post.id} message={post.message} dislikesCount={post.dislikesCount} likesCount={post.likesCount} id={post.id} likeSrc={post.likeSrc} dislikeSrc={post.dislikeSrc} />);
   return (
     <div>
       <h1 className={s.MyPosts__title}>My Posts</h1>

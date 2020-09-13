@@ -1,5 +1,5 @@
 import Post from './Post';
-import { changeLikeActionCreator, changeDisikeActionCreator } from './../../../../redux/profileReducer';
+import { changeLikeAC, changeDisikeAC } from './../../../../redux/profileReducer';
 import { connect } from 'react-redux';
 
 let mapDataToProps = (state) => {
@@ -11,10 +11,10 @@ let mapDataToProps = (state) => {
 let mapDispatchToProps= (dispatch) => {
   return {
     changeLike: (id) => {
-      dispatch(changeLikeActionCreator(id));
+      dispatch(changeLikeAC(id));
     },
     changedisilke: (id) => {
-      dispatch(changeDisikeActionCreator(id));
+      dispatch(changeDisikeAC(id));
     },
   }
 }

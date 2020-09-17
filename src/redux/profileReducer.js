@@ -49,20 +49,44 @@ const profileReducer = (state = initState, action) => {
             return { ...state, postData: state.postData.filter(p => p.id !== action.id) };
 
         case CHANGE_LIKE: {
+            let post = state.postData.find(p => p.id === action.id);
+            if (post.dislikesCount === 0 && post.likesCount === 0) {
+                post.likesCount++;
+                post.likeSrc = likeActive;
+            } else if (post.dislikesCount === 0 && post.likesCount !== 0) {
+                post.likesCount--;
+                post.likeSrc = like;
+            } else {
+                post.dislikesCount--;
+                post.dislikeSrc = dislike;
+                post.likeSrc = likeActive;
+                post.likesCount++;
+            }
+
             return {
                 ...state,
-                postData: [...state.postData, state.postData.find(p => p.id === action.id).likesCount += 1]
+                postData: [...state.postData]
             };
         }
 
         case CHANGE_DISLIKE: {
-            let post = {...state.postData.find(p => p.id === action.id)};
-            if (post.likesCount === 0) {
-                post.dislikesCount++
+            let post = state.postData.find(p => p.id === action.id);
+            if (post.likesCount === 0 && post.dislikesCount === 0) {
+                post.dislikesCount++;
+                post.dislikeSrc = dislikeActive;
+            } else if (post.likesCount === 0 && post.dislikesCount !== 0) {
+                post.dislikesCount--;
+                post.dislikeSrc = dislike;
+            } else {
+                post.likesCount--;
+                post.likeSrc = like;
+                post.dislikeSrc = dislikeActive;
+                post.dislikesCount++;
             }
+
             return {
                 ...state,
-                postData: [...state.postData, post]
+                postData: [...state.postData]
             }
         }
 
@@ -91,30 +115,30 @@ export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
 
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 
-export const getProfileTC = (userId) => (dispatch) => {
-    profileAPI.getProfile(userId).then(response => {
+export const getProfileTC = (userId) => async (dispatch) => {
+    let response = await profileAPI.getProfile(userId);
+
         if (response.photos.large === null) {
             response.photos.large = avadefault;
         }
         dispatch(setProfile(response));
-    });
 };
 
-export const getStatusTC = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId).then(response => {
+export const getStatusTC = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId);
+
         if (!response) {
             response = "Not status"
         }
         dispatch(setStatus(response));
-    });
 };
 
-export const updateStatusTC = (status) => (dispatch) => {
-    profileAPI.updateStatus(status).then(response => {
+export const updateStatusTC = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status);
+
         if (response.resultCode === 0) {
             dispatch(setStatus(status));
         }
-    });
 };
 
 export default profileReducer;

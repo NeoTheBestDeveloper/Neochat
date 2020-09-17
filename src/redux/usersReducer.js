@@ -23,7 +23,6 @@ let initState = {
 
 const userReducer = (state = initState, action) => {
     switch (action.type) {
-        case "FAKE": return {...state, fake: state.fake + 1}
         case FOLLOW:
             return {
                 ...state,
@@ -69,7 +68,7 @@ const userReducer = (state = initState, action) => {
         default:
             return state;
     };
-}; 
+};
 
 export const followSuccess = (id) => ({ type: FOLLOW, id: id });
 export const unfollowSuccess = (id) => ({ type: UNFOLLOW, id: id });
@@ -79,48 +78,37 @@ export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_USERS_TOTAL_
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleFollowigProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId });
 
-export const getUsersThunkCreater = (currentPage, pageSize) => {
+export const getUsersThunkCreater = (currentPage, pageSize) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
 
-    return (dispatch) => {
+    let response = await usersAPI.getUsers(currentPage, pageSize);
 
-        dispatch(toggleIsFetching(true));
-
-        usersAPI.getUsers(currentPage, pageSize).then(response => {
-            dispatch(setCurrentPage(currentPage));
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(response.items));
-            dispatch(setUsersTotalCount(response.totalCount));
-
-        });
-    }
+    dispatch(setCurrentPage(currentPage));
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(response.items));
+    dispatch(setUsersTotalCount(response.totalCount));
 };
 
-export const unfollow = (userId) => {
-
-    return (dispatch) => {
-
+export const unfollow = (userId) => async (dispatch) => {
         dispatch(toggleFollowigProgress(true, userId));
-        followAPI.unfollow(userId).then(response => {
+
+        let response = await followAPI.unfollow(userId);
+
             if (response.resultCode === 0) {
                 dispatch(unfollowSuccess(userId));
             }
             dispatch(toggleFollowigProgress(false, userId));
-        });
-    }
 };
 
-export const follow = (userId) => {
-
-    return (dispatch) => {
-
+export const follow = (userId) => async (dispatch) => {
         dispatch(toggleFollowigProgress(true, userId));
-        followAPI.follow(userId).then(response => {
+
+        let response = await followAPI.follow(userId);
+        
             if (response.resultCode === 0) {
                 dispatch(followSuccess(userId));
             }
             dispatch(toggleFollowigProgress(false, userId));
-        })
-    }
 };
 
 export default userReducer;

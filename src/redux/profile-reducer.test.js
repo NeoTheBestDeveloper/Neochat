@@ -4,7 +4,7 @@ let state = {
     postData: [
         {id: 1, message: 'test1', likesCount: 0, dislikesCount: 0},
         {id: 2, message: 'test2', likesCount: 1, dislikesCount: 0},
-        {id: 3, message: 'test3', likesCount: 5, dislikesCount: 0},
+        {id: 3, message: 'test3', likesCount: 5, dislikesCount: 1},
         {id: 4, message: 'test4', likesCount: 4, dislikesCount: 0},
     ],
     likesCountStart: 0,
@@ -60,3 +60,10 @@ test('if post have like, click on dislike should remove like', () => {
     expect(newState.postData[1].likesCount).toBe(0);
 });
 
+test('if post have dislike, click on like should remove dislike', () => {
+    let action = changeLikeAC(3);
+
+    let newState = profileReducer(state, action);
+
+    expect(newState.postData[2].dislikesCount).toBe(0);
+});

@@ -9,11 +9,13 @@ import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getAvaDefaul
 
 class UsersComponent extends React.Component {
     componentDidMount() {
-        this.props.getUsersThunkCreater(this.props.currentPage, this.props.pageSize);
+        let {currentPage, pageSize} = this.props;
+        this.props.getUsersThunkCreater(currentPage, pageSize);
     }
 
     onPageChanched = (pageNumber) => {
-        this.props.getUsersThunkCreater(pageNumber, this.props.pageSize);
+        let {pageSize} = this.props;
+        this.props.getUsersThunkCreater(pageNumber, pageSize);
     }
 
     render() {
@@ -34,18 +36,6 @@ class UsersComponent extends React.Component {
         </>
     }
 }
-
-// let mapStateToProps = (state) => {
-//     return {
-//         users: state.usersPage.usersData,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         avaDefault: state.usersPage.avaDefault,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress,
-//     }
-// }
 
 let mapStateToProps = (state) => {
     return {

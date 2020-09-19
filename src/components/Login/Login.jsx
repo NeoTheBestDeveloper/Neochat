@@ -13,9 +13,9 @@ import { Redirect } from 'react-router-dom';
 const maxLenght50 = maxLengthCreater(50);
 const Input = FormControl("input");
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return <div>
-        <form onSubmit={props.handleSubmit} className={s.form}>
+        <form onSubmit={handleSubmit} className={s.form}>
             <div className={s.form_login_wrapper}>
                 <Field type={'text'}
                     placeholder={'Email'}
@@ -40,7 +40,7 @@ const LoginForm = (props) => {
                     <Field type={'checkbox'} className={s.form_checkboxInput} id={'rememberMe'} component={"input"} name={'rememberMe'} />
                 </div>
             </div>
-            {props.error && <div className={formControlStyles.form_summary_error}>{props.error}</div>}
+            {error && <div className={formControlStyles.form_summary_error}>{error}</div>}
             
         </form>
     </div>

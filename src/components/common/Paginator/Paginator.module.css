@@ -1,0 +1,27 @@
+.pageChoise  {
+    display: flex;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.pageChoise li {
+    margin-top: 10px;
+    list-style: none;
+    width: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+    color: #fff;
+}
+
+.pageChoise li:hover {
+    color: #9daaac;
+  }
+
+.pageChoise li:active {
+    color: #768586;
+  }
+
+li.selected {
+    color: #687172;
+}

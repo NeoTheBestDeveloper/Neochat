@@ -1,5 +1,6 @@
 import avaDefault from '../img/avaSvgDefault.svg';
 import { usersAPI, followAPI } from './../api/api';
+import { updateObjectInArray } from '../utils/object-helpers';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -18,7 +19,6 @@ let initState = {
     avaDefault: avaDefault,
     isFetching: true,
     followingInProgress: [],
-    fake: 7,
 }
 
 const userReducer = (state = initState, action) => {
@@ -26,23 +26,13 @@ const userReducer = (state = initState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                usersData: state.usersData.map(u => {
-                    if (u.id === action.id) {
-                        return { ...u, followed: true }
-                    }
-                    return u;
-                })
+                usersData: updateObjectInArray(state.usersData, action.id, "id", {followed: true})             
             }
 
         case UNFOLLOW:
             return {
                 ...state,
-                usersData: state.usersData.map(u => {
-                    if (u.id === action.id) {
-                        return { ...u, followed: false }
-                    }
-                    return u;
-                })
+                usersData: updateObjectInArray(state.usersData, action.id, 'id', {followed: false})
             }
 
         case SET_USERS:
@@ -90,25 +80,25 @@ export const getUsersThunkCreater = (currentPage, pageSize) => async (dispatch) 
 };
 
 export const unfollow = (userId) => async (dispatch) => {
-        dispatch(toggleFollowigProgress(true, userId));
+    dispatch(toggleFollowigProgress(true, userId));
 
-        let response = await followAPI.unfollow(userId);
+    let response = await followAPI.unfollow(userId);
 
-            if (response.resultCode === 0) {
-                dispatch(unfollowSuccess(userId));
-            }
-            dispatch(toggleFollowigProgress(false, userId));
+    if (response.resultCode === 0) {
+        dispatch(unfollowSuccess(userId));
+    }
+    dispatch(toggleFollowigProgress(false, userId));
 };
 
 export const follow = (userId) => async (dispatch) => {
-        dispatch(toggleFollowigProgress(true, userId));
+    dispatch(toggleFollowigProgress(true, userId));
 
-        let response = await followAPI.follow(userId);
-        
-            if (response.resultCode === 0) {
-                dispatch(followSuccess(userId));
-            }
-            dispatch(toggleFollowigProgress(false, userId));
+    let response = await followAPI.follow(userId);
+
+    if (response.resultCode === 0) {
+        dispatch(followSuccess(userId));
+    }
+    dispatch(toggleFollowigProgress(false, userId));
 };
 
 export default userReducer;

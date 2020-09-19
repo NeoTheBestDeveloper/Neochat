@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
@@ -30,7 +30,6 @@ class App extends React.Component {
     }
 
     return (
-      <BrowserRouter>
           <div className="app-wrapper">
             <HeaderContainer />
             <Nav />
@@ -47,7 +46,6 @@ class App extends React.Component {
               <Route path="/users" render={() => <UsersContainer />} />
             </div>
           </div>
-      </BrowserRouter >
     );
   }
 }

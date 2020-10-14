@@ -20,7 +20,7 @@
     "reselect": "^4.0.0"
   },
   "scripts": {
-    "start": "BROWSER=chromium react-scripts start",
+    "start": "BROWSER=chromium HOST=0.0.0.0 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,8 +1,12 @@
-.pageChoise {
+.wrapper {
   position: absolute;
+  width: 35%;
+}
+
+.pageChoise {
   display: flex;
   justify-content: space-around;
-  left: 35%;
+  margin: 0 auto;
   width: 43%;
 }
 

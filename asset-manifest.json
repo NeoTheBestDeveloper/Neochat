@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Neochat/static/css/main.e490fba8.chunk.css",
-    "main.js": "/Neochat/static/js/main.4f5450e3.chunk.js",
-    "main.js.map": "/Neochat/static/js/main.4f5450e3.chunk.js.map",
+    "main.js": "/Neochat/static/js/main.5d32e020.chunk.js",
+    "main.js.map": "/Neochat/static/js/main.5d32e020.chunk.js.map",
     "runtime-main.js": "/Neochat/static/js/runtime-main.47528630.js",
     "runtime-main.js.map": "/Neochat/static/js/runtime-main.47528630.js.map",
     "static/js/2.a8a58b31.chunk.js": "/Neochat/static/js/2.a8a58b31.chunk.js",
     "static/js/2.a8a58b31.chunk.js.map": "/Neochat/static/js/2.a8a58b31.chunk.js.map",
     "index.html": "/Neochat/index.html",
-    "precache-manifest.261d0c8f3547678238823378993154a4.js": "/Neochat/precache-manifest.261d0c8f3547678238823378993154a4.js",
+    "precache-manifest.f7dc6a26f9daf147ebc881175405914f.js": "/Neochat/precache-manifest.f7dc6a26f9daf147ebc881175405914f.js",
     "service-worker.js": "/Neochat/service-worker.js",
     "static/css/main.e490fba8.chunk.css.map": "/Neochat/static/css/main.e490fba8.chunk.css.map",
     "static/js/2.a8a58b31.chunk.js.LICENSE.txt": "/Neochat/static/js/2.a8a58b31.chunk.js.LICENSE.txt",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.47528630.js",
     "static/js/2.a8a58b31.chunk.js",
     "static/css/main.e490fba8.chunk.css",
-    "static/js/main.4f5450e3.chunk.js"
+    "static/js/main.5d32e020.chunk.js"
   ]
 }

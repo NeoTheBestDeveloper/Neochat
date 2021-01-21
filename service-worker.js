@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Neochat/precache-manifest.261d0c8f3547678238823378993154a4.js"
+  "/Neochat/precache-manifest.f7dc6a26f9daf147ebc881175405914f.js"
 );
 
 self.addEventListener('message', (event) => {

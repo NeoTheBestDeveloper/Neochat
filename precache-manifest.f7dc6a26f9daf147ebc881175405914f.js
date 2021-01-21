@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd57d0dd67e1953fdea31688985a8ff3",
+    "revision": "4d010a6fdb8df2eb9c5ed993b2577b46",
     "url": "/Neochat/index.html"
   },
   {
-    "revision": "192a4940cf9d74e04010",
+    "revision": "a60f689251dec8c0a523",
     "url": "/Neochat/static/css/main.e490fba8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Neochat/static/js/2.a8a58b31.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "192a4940cf9d74e04010",
-    "url": "/Neochat/static/js/main.4f5450e3.chunk.js"
+    "revision": "a60f689251dec8c0a523",
+    "url": "/Neochat/static/js/main.5d32e020.chunk.js"
   },
   {
     "revision": "526e653ad884e0099bcb",

@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/Neochat/static/css/main.e490fba8.chunk.css",
+    "main.js": "/Neochat/static/js/main.4f5450e3.chunk.js",
+    "main.js.map": "/Neochat/static/js/main.4f5450e3.chunk.js.map",
+    "runtime-main.js": "/Neochat/static/js/runtime-main.47528630.js",
+    "runtime-main.js.map": "/Neochat/static/js/runtime-main.47528630.js.map",
+    "static/js/2.a8a58b31.chunk.js": "/Neochat/static/js/2.a8a58b31.chunk.js",
+    "static/js/2.a8a58b31.chunk.js.map": "/Neochat/static/js/2.a8a58b31.chunk.js.map",
+    "index.html": "/Neochat/index.html",
+    "precache-manifest.261d0c8f3547678238823378993154a4.js": "/Neochat/precache-manifest.261d0c8f3547678238823378993154a4.js",
+    "service-worker.js": "/Neochat/service-worker.js",
+    "static/css/main.e490fba8.chunk.css.map": "/Neochat/static/css/main.e490fba8.chunk.css.map",
+    "static/js/2.a8a58b31.chunk.js.LICENSE.txt": "/Neochat/static/js/2.a8a58b31.chunk.js.LICENSE.txt",
+    "static/media/30.jpg": "/Neochat/static/media/30.a575ad6a.jpg",
+    "static/media/7.jpg": "/Neochat/static/media/7.8a9519e1.jpg",
+    "static/media/avaSvgDefault.svg": "/Neochat/static/media/avaSvgDefault.f9d5315a.svg",
+    "static/media/thumbs-down-regular.svg": "/Neochat/static/media/thumbs-down-regular.d28f6a89.svg",
+    "static/media/thumbs-down-solid.svg": "/Neochat/static/media/thumbs-down-solid.f1faec9f.svg",
+    "static/media/thumbs-up-regular.svg": "/Neochat/static/media/thumbs-up-regular.d51a5b46.svg",
+    "static/media/thumbs-up-solid.svg": "/Neochat/static/media/thumbs-up-solid.dbeab264.svg",
+    "static/media/user.svg": "/Neochat/static/media/user.5e946c20.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.47528630.js",
+    "static/js/2.a8a58b31.chunk.js",
+    "static/css/main.e490fba8.chunk.css",
+    "static/js/main.4f5450e3.chunk.js"
+  ]
+}
